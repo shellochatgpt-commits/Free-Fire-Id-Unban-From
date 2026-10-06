@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body {
+  margin: 0;
+  padding: 20px;
+  background: linear-gradient(135deg, #ff4fa3, #8a2be2);
+  font-family: Arial;
+}
+
+.box {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  max-width: 400px;
+  margin: 30px auto;
+}
+
+h1 {
+  text-align: center;
+  color: #8a2be2;
+}
+
+input {
+  width: 100%;
+  padding: 14px;
+  margin: 8px 0 15px;
+  box-sizing: border-box;
+  border: 2px solid #d69be8;
+  border-radius: 10px;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  border: 0;
+  border-radius: 10px;
+  background: linear-gradient(90deg, #ff1493, #8a2be2);
+  color: white;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+#loading {
+  display: none;
+  text-align: center;
+}
+
+#result {
+  display: none;
+  text-align: center;
+  color: #6b1875;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+  <div id="form">
+
+    <h1>Account Review</h1>
+
+    <p style="text-align:center;color:#777;">
+       FORM —  account verification is performed.
+    </p>
+
+    <b>UID</b>
+    <input type="text" placeholder="Enter your UID">
+
+    <b>Level</b>
+    <input type="number" placeholder="Enter your level">
+
+    <b>Nickname</b>
+    <input type="text" placeholder="Enter your nickname">
+
+    <b>Country</b>
+    <input type="text" placeholder="Enter your country">
+
+    <button onclick="start()">Submit</button>
+
+  </div>
+
+
+  <div id="loading">
+
+    <h2>Checking Account...</h2>
+
+    <p id="number">0%</p>
+
+    <progress id="bar" value="0" max="100"
+      style="width:100%;height:20px;">
+    </progress>
+
+    <p>Please wait...</p>
+
+  </div>
+
+
+  <div id="result">
+
+    <h2>Review Complete</h2>
+
+    <p>
+      Your account will be reviewed for unban soon.
+    </p>
+
+    <p>
+      Please make sure you have not used
+      unauthorized third-party tools or cheats.
+    </p>
+
+  </div>
+
+</div>
+
+
+<script>
+
+function start() {
+
+  document.getElementById("form").style.display = "none";
+
+  document.getElementById("loading").style.display = "block";
+
+  var n = 0;
+
+  var timer = setInterval(function() {
+
+    n++;
+
+    document.getElementById("bar").value = n;
+
+    document.getElementById("number").innerHTML = n + "%";
+
+    if (n >= 100) {
+
+      clearInterval(timer);
+
+      document.getElementById("loading").style.display = "none";
+
+      document.getElementById("result").style.display = "block";
+
+    }
+
+  }, 150);
+
+}
+
+</script>
+
+</body>
+</html>
